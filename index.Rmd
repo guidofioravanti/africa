@@ -1,0 +1,76 @@
+---
+title: SPI & Monthly normals
+subset: study domain, Africa (-32,75,-42,42)
+date: "`r Sys.Date()`"
+---
+
+# 1981-2010 monthly total precipitation
+
+- [CHIRPS](./chirps/normals/climatologici.html)
+
+- [ERA5](./era5/normals/climatologici.html)
+
+- [GPCC](./gpcc/normals/climatologici.html)
+
+- [JRA55](./jra55/normals/climatologici.html)
+
+- [MERRA](./merra/normals/climatologici.html)
+
+- [Boxplots](./tutti/boxplot_climatologici/boxplot.html)
+
+# SPI-3
+
+- [CHIRPS](./chirps/spi/plotSPI3.html)
+
+- [CHIRPS consolidated](./chirps_consolidated/spi/plotSPI3.html)
+
+- [ERA5](./era5/spi/plotSPI3.html)
+
+- [GPCC](./gpcc/spi/plotSPI3.html)
+
+- [JRA55](./jra55/spi/plotSPI3.html)
+
+- [MERRA](./merra/spi/plotSPI3.html)
+
+# SPI-6
+
+- [CHIRPS](./chirps/spi/plotSPI6.html)
+
+- [CHIRPS consolidated](./chirps_consolidated/spi/plotSPI6.html)
+
+- [ERA5](./era5/spi/plotSPI6.html)
+
+- [GPCC](./gpcc/spi/plotSPI6.html)
+
+- [JRA55](./jra55/spi/plotSPI6.html)
+
+- [MERRA](./merra/spi/plotSPI6.html)
+
+# SPI-9
+
+- [CHIRPS](./chirps/spi/plotSPI9.html)
+
+- [CHIRPS consolidated](./chirps_consolidated/spi/plotSPI9.html)
+
+- [ERA5](./era5/spi/plotSPI9.html)
+
+- [GPCC](./gpcc/spi/plotSPI9.html)
+
+- [JRA55](./jra55/spi/plotSPI9.html)
+
+- [MERRA](./merra/spi/plotSPI9.html)
+
+# SPI-12
+
+- [CHIRPS](./chirps/spi/plotSPI12.html)
+
+- [CHIRPS consolidated](./chirps_consolidated/spi/plotSPI12.html)
+
+- [ERA5](./era5/spi/plotSPI12.html)
+
+- [GPCC](./gpcc/spi/plotSPI12.html)
+
+- [JRA55](./jra55/spi/plotSPI12.html)
+
+- [MERRA](./merra/spi/plotSPI12.html)
+
