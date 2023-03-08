@@ -1,0 +1,95 @@
+---
+title: CHIRPS (Final product only)
+subtitle: Baseline 1981 - 2010 
+date: "`r Sys.Date()`"
+params:
+  spi_scale: ""
+  annoI: 2018
+  annoF: 2022
+  annoICLIM: 1981
+  annoFCLIM: 2010
+  nomeFile: ""
+---
+
+# SPI-`r params$spi_scale`
+
+```{r intro,include=FALSE,warning=FALSE,message=FALSE,error=FALSE,echo=FALSE}
+#7 marzo 2023
+library("terra")
+library("tidyverse")
+library("sf")
+library("ggspatial")
+library("scico")
+library("patchwork")
+
+
+#plan(strategy = multicore,workers=3)
+annoI<-params$annoI
+annoF<-params$annoF
+numero_anni<-annoF-annoI+1
+spi_scale<-params$spi_scale
+
+#inizio e fine valore climatologico di riferimento (baseline) per SPI
+annoICLIM<-params$annoICLIM
+annoFCLIM<-params$annoFCLIM
+
+#non buffered mask for the African continent
+st_read("../africa_mask/africa.shp")->africa
+vect(africa)->vectAfrica
+
+rast(params$nomeFile)->mybrick
+
+#for mapping
+ifel(mybrick>3,3,mybrick)->mybrick
+ifel(mybrick< -3,-3,mybrick)->mybrick
+
+ifel(abs(mybrick)<=1,NA,mybrick)->mybrick
+
+
+nomi<-tidyr::expand_grid(yy=annoI:annoF,mm=1:12) %>%
+  mutate(yymmdd=glue::glue("{yy}-{str_pad(mm,pad='0',width=2,side='left')}-01")) %>%
+  dplyr::pull(yymmdd)
+
+names(mybrick)<-nomi
+
+grafico<-function(inizio,fine){
+  
+  purrr::map(inizio:fine,.f=function(.x){
+  
+   ggplot()+
+     layer_spatial(mybrick[[.x]])+
+     layer_spatial(africa,fill="transparent",color="black")+
+     scale_fill_scico(palette="romaO",na.value="transparent",limits=c(-3,3),breaks=seq(-3,3,0.5),guide=guide_colorbar(title=glue::glue("SPI{spi_scale}"),barheight = grid::unit(6,"cm")))+
+     ggtitle(nomi[.x])+
+     theme_bw()+
+     theme(panel.grid = element_blank(),axis.text = element_blank(),legend.key.height = grid::unit(3,"cm"))
+   
+    
+    
+  })->listaGrafici
+ 
+
+ purrr::reduce(listaGrafici,.f=`+`)+plot_layout(guides="collect",ncol=3)
+
+}#fine grafico
+```
+
+```{r,include=TRUE,warning=FALSE,message=FALSE,error=FALSE,echo=FALSE,fig.height=10}
+grafico(1,12)
+```
+
+```{r,include=TRUE,warning=FALSE,message=FALSE,error=FALSE,echo=FALSE,fig.height=10}
+grafico(13,24)
+```
+
+```{r,include=TRUE,warning=FALSE,message=FALSE,error=FALSE,echo=FALSE,fig.height=10}
+grafico(25,36)
+```
+
+```{r,include=TRUE,warning=FALSE,message=FALSE,error=FALSE,echo=FALSE,fig.height=10}
+grafico(37,48)
+```
+
+```{r,include=TRUE,warning=FALSE,message=FALSE,error=FALSE,echo=FALSE,fig.height=10}
+grafico(49,60)
+```
