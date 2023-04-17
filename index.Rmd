@@ -1,8 +1,12 @@
 ---
-title: SPI & Monthly normals
+title: AFRICA, comparison of different datasets
 subset: study domain, Africa (-32,75,-42,42)
 date: "`r Sys.Date()`"
 ---
+
+# Cluster analysis
+
+- [Cluster analysis output areas](./cluster_analysis/cluster.html)
 
 # 1981-2010 monthly total precipitation
 
