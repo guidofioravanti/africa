@@ -8,6 +8,8 @@ date: "`r Sys.Date()`"
 
 - [Cluster analysis output areas](./cluster_analysis/cluster.html)
 
+- [2018-2022 monthly totals over the cluster analysis output areas](./cluster_analysis/grafico_ris_clusters.html)
+
 # 1981-2010 monthly total precipitation
 
 - [CHIRPS](./chirps/normals/climatologici.html)
