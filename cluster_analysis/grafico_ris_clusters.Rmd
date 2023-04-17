@@ -1,0 +1,30 @@
+---
+title: 2013-2022 monthly totals
+subtitle: Totals over the cluster analysis output areas
+date: "`r Sys.Date()`"
+author: Guido Fioravanti
+---
+
+
+```{r intro,include=FALSE,error=FALSE,warning=FALSE,echo=FALSE,message=FALSE}
+library("ggplot2")
+library("readr")
+library("dplyr")
+```
+
+<br><br>
+
+See [this page](https://guidofioravanti.github.io/africa/cluster_analysis/cluster.html) for the results of the cluster analysis over East Africa.
+
+```{r plot,include=TRUE,error=FALSE,warning=FALSE,echo=FALSE,message=FALSE,fig.width=12}
+read_delim("sintesi_cluster.csv",delim=";",col_names = TRUE) |>
+  mutate(yy=as.Date(yy)) |>
+  ggplot()+
+  geom_line(aes(x=yy,y=sintesi,colour=modello,group=modello))+
+  facet_wrap(~cluster)+
+  xlab("")+
+  ylab("mm")+
+  theme_bw()+
+  theme(panel.grid.major.x =element_blank(),
+        panel.grid.minor.x = element_blank())
+```
