@@ -16,7 +16,11 @@ library("dplyr")
 
 See [this page](https://guidofioravanti.github.io/africa/cluster_analysis/cluster.html) for the results of the cluster analysis over East Africa.
 
-```{r plot,include=TRUE,error=FALSE,warning=FALSE,echo=FALSE,message=FALSE,fig.width=12}
+<br>
+
+Note: for HSAF, the year 2022 is not represented in the plot below.
+
+```{r plot,include=TRUE,error=FALSE,warning=FALSE,echo=FALSE,message=FALSE,fig.width=12,fig.height=8}
 read_delim("sintesi_cluster.csv",delim=";",col_names = TRUE) |>
   mutate(yy=as.Date(yy)) |>
   ggplot()+
